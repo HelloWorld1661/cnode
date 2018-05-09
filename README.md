@@ -1,2 +1,2 @@
 # cnode
-This is a simulates the cnode community website project.  It's only used for the purpose of learning website development
+This is a website project which will simulate the cnode community website. It's only used for the purpose of learning website development.
