@@ -1,0 +1,13 @@
+<!-- requests that the output of the current template be passed to 
+  the given view as the body local. -->
+<%- layout('layout')%>
+
+    <!-- Print the variable hello on the html page. -->
+    <%=hello%>
+        <ul>
+            <!-- passing names array to the variable name. -->
+            <%- partial('name',names) %>
+        </ul>
+
+        <!-- Adding the html content to footer block. -->
+        <% block('footer').append('<div>hello footer</div>') %>
