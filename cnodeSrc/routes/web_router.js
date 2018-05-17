@@ -8,7 +8,7 @@ router.get('/signup', function(req, res) {
 
 //submit sign up information
 router.post('/signup', function(req, res) {
-    //implement to submit sign up function
+    //implement to submit sign up fuction
 });
 
 //display sign in page
