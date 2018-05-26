@@ -1,12 +1,50 @@
 <%-layout('layout')%>
-    <div id="content">
-        <div class="panel">
-            <div class="header">
-                <ul class="breadcrumb">
-                    <li><a herf="/">Home</a><span class="divider">/</span></li>
-                    <li>注册</li>
-                </ul>
+    <div id="main">
+        <%-partial('sidebar')%>
+            <div id="content">
+                <div class="panel">
+                    <div class="header">
+                        <ul class="breadcrumb">
+                            <li>
+                                <a herf="/">Home</a>
+                                <span class="divider">/</span>
+                            </li>
+                            <li>Sign Up</li>
+                        </ul>
+                    </div>
+
+                    <div class="inner">
+                        <form action="/signup" method='post' id="signup_form" class="form-horizontal">
+                            <div class="control-group">
+                                <label for="" class="control-label">User Name: </label>
+                                <div class="controls">
+                                    <input type="text" name='loginname' id="loginname" class="input-xlarge">
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label for="" class="control-label">Password: </label>
+                                <div class="controls">
+                                    <input type="text" name='pass' id="pass" class="input-xlarge">
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label for="" class="control-label">Confirm Password: </label>
+                                <div class="controls">
+                                    <input type="text" name='re-pass' id="re_pass" class="input-xlarge">
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label for="" class="control-label">Email: </label>
+                                <div class="controls">
+                                    <input type="text" name='email' id="email" class="input-xlarge">
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <input type="submit" class="span-primary" value='Sign Up'>
+                                <input type="reset" class="span-info" value='Reset Form'>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
-            <div class="inner"></div>
-        </div>
     </div>
