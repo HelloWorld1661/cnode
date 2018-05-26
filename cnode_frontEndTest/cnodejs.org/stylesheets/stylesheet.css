@@ -2134,7 +2134,7 @@ table th[class *=span] {
     margin-top: 1px;
     line-height: 14px;
     vertical-align: text-top;
-    background-image: url("../images/glyphicons-halflings-white.png");
+    background-image: url("../images/img/glyphicons-halflings-white.png");
     background-position: 14px 14px;
     background-repeat: no-repeat
 }
@@ -2156,7 +2156,7 @@ table th[class *=span] {
 .nav-pills>.active>a>[class^=icon-],
 .navbar-inverse .nav>.active>a>[class *=" icon-"],
 .navbar-inverse .nav>.active>a>[class^=icon-] {
-    background-image: url("../images/glyphicons-halflings.png")
+    background-image: url("../images/img/glyphicons-halflings.png")
 }
 
 .icon-glass {
@@ -7300,7 +7300,6 @@ textarea.editor {
     }
     .navbar .nav.pull-right {
         float: none;
-        /* float: right; */
         clear: both
     }
     #main {
