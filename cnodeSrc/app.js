@@ -4,6 +4,8 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var engine = require('ejs-mate');
+var session = require('express-session');
+var RedisStore = require('connect-redis')(session);
 var config = require('./config');
 
 // var indexRouter = require('./routes/index');
@@ -22,7 +24,15 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser())
 app.use('/public', express.static(path.join(__dirname, 'public')));
-
+app.use(session({
+    store: new RedisStore({
+        port: 6379,
+        host: '127.0.0.1'
+    }),
+    secret: 'keyboard dog',
+    resave: true,
+    saveUninitialized: true
+}));
 app.locals.config = config;
 // app.use('/', indexRouter);
 // app.use('/users', usersRouter);

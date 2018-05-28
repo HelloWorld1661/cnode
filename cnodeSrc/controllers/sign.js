@@ -60,9 +60,28 @@ exports.showSignin = function(req, res) {
 };
 
 exports.signin = function(req, res) {
+    var username = req.body.loginname;
+    var pass = req.body.pass;
 
+    if (!username || !pass) {
+        res.status('sign/signin', { error: 'The information you filled in is incomplete！' })
+    }
+    UserModel.getUser(username, pass, function(err, user) {
+        if (user) {
+            req.session.user = user;
+            res.render('sign/signin', {
+                success: 'sign in suceesfully'
+            });
+        } else {
+            res.status(422);
+            res.render('sign/signin', {
+                error: 'wrong user name or password'
+            });
+        }
+    })
 };
 
 exports.signout = function(req, res) {
-
+    req.session.destroyed();
+    res.redirect('/');
 };
