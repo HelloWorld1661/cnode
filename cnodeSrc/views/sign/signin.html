@@ -14,25 +14,40 @@
                     </div>
 
                     <div class="inner">
-                        <form action="/signip" method='post' id="signip_form" class="form-horizontal">
-                            <div class="control-group">
-                                <label for="" class="control-label">User Name: </label>
-                                <div class="controls">
-                                    <input type="text" name='name' id="name" class="input-xlarge">
-                                </div>
+                        <% if(typeof(error) != 'undefined' && error){%>
+                            <div class="alert alert-eeor">
+                                <strong>
+            <%=error%>
+        </strong>
                             </div>
-                            <div class="control-group">
-                                <label for="" class="control-label">Password: </label>
-                                <div class="controls">
-                                    <input type="text" name='pass' id="pass" class="input-xlarge">
-                                </div>
-                            </div>
+                            <%}%>
+                                <% if(typeof(success) != 'undefined' && success){%>
+                                    <div class="alert alert-eeor">
+                                        <strong>
+                    <%=sucess%>
+                </strong>
+                                    </div>
+                                    <%}%>
 
-                            <div class="form-actions">
-                                <input type="submit" class="span-primary" value='Sign In'>
-                                <input type="reset" class="span-info" value='Reset Password'>
-                            </div>
-                        </form>
+                                        <form action="/signip" method='post' id="signip_form" class="form-horizontal">
+                                            <div class="control-group">
+                                                <label for="" class="control-label">User Name: </label>
+                                                <div class="controls">
+                                                    <input type="text" name='name' id="name" class="input-xlarge">
+                                                </div>
+                                            </div>
+                                            <div class="control-group">
+                                                <label for="" class="control-label">Password: </label>
+                                                <div class="controls">
+                                                    <input type="text" name='pass' id="pass" class="input-xlarge">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-actions">
+                                                <input type="submit" class="span-primary" value='Sign In'>
+                                                <input type="reset" class="span-info" value='Reset Password'>
+                                            </div>
+                                        </form>
                     </div>
                 </div>
             </div>
