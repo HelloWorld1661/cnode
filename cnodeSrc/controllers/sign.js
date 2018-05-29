@@ -1,5 +1,5 @@
 var eventproxy = require('eventproxy');
-var UserModel = {};
+var UserModel = require('../models/user');
 
 exports.showSignup = function(req, res) {
     res.render('sign/signup');
