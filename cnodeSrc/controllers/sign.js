@@ -1,5 +1,5 @@
 var eventproxy = require('eventproxy');
-var UserModel = require('../models/user');
+var UserModel = require('../models/user'); //EventProxy. An implementation of task/event based asynchronous pattern.
 
 exports.showSignup = function(req, res) {
     res.render('sign/signup');
@@ -20,7 +20,6 @@ exports.signup = function(req, res) {
 
     //2.Check data
     var hasEmptyInfo = [username, pass, re_pass, email].some(function(item) {
-        console.log('item');
         return item === '';
     });
 
@@ -32,18 +31,19 @@ exports.signup = function(req, res) {
     }
 
     // 3. Save to database
+    // Check for existing users
     UserModel.getUserBySignupInfo(username, email, function(err, users) {
         if (err) {
-            ep.emit('info_error', 'Failed to get user data!');
+            ep.emit('info_error', 'Failed to get user data from database!');
             return;
         }
+        //the user existed.
         if (users.length > 0) {
             ep.emit('info_error', 'Username or mailbox is occupied');
             return;
         }
-
+        //Do not have an existing user Info,then adding new user information into the database.
         UserModel.addUser({ username: name, pass: pass, email: email }, function(err, result) {
-            console.log('222222222222');
             if (result) {
                 res.render('sign/signup', {
                     success: 'Congratulations, your registration was successful'
@@ -64,7 +64,8 @@ exports.signin = function(req, res) {
     var pass = req.body.pass;
 
     if (!username || !pass) {
-        res.status('sign/signin', { error: 'The information you filled in is incomplete！' })
+        res.status(422);
+        return res.status('sign/signin', { error: 'The information you filled in is incomplete！' });
     }
     UserModel.getUser(username, pass, function(err, user) {
         if (user) {

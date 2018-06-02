@@ -15,19 +15,19 @@
 
                     <div class="inner">
                         <% if(typeof(error) != 'undefined' && error){%>
-                            <div class="alert alert-eeor">
+                            <div class="alert alert-error">
                                 <strong>
                                     <%=error%>
                                 </strong>
                             </div>
-                            <%}%>
+                            <% }%>
                                 <% if(typeof(success) != 'undefined' && success){%>
-                                    <div class="alert alert-eeor">
+                                    <div class="alert alert-error">
                                         <strong>
-                                            <%=sucess%>
+                                            <%=success%>
                                         </strong>
                                     </div>
-                                    <%}%>
+                                    <% }%>
 
                                         <form action="/signup" method='post' id="signup_form" class="form-horizontal">
                                             <div class="control-group">

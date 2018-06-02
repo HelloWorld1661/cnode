@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
-mongoose.connect('mongodb:127.0.0.1/node_club');
+mongoose.connect('mongodb://localhost/node_club');
+// mongoose.connect('mongodb://localhost/my_database');
 
 var UserSchema = new mongoose.Schema({
     username: String,
@@ -12,7 +13,7 @@ UserSchema.statics.getUserBySignupInfo = function(username, email, callback) {
     this.find(cond, callback);
 };
 
-UserSchema.statics.addUser = function(username, callback) {
+UserSchema.statics.addUser = function(user, callback) {
     this.create(user, callback);
 };
 UserSchema.statics.getUser = function(username, pass, callback) {
