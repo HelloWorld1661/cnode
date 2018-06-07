@@ -1,5 +1,5 @@
 var eventproxy = require('eventproxy');
-var UserModel = require('../models/user.js'); //EventProxy. An implementation of task/event based asynchronous pattern.
+var UserModel = require('../models/user'); //EventProxy. An implementation of task/event based asynchronous pattern.
 
 exports.showSignup = function(req, res) {
     res.render('sign/signup');
@@ -32,18 +32,20 @@ exports.signup = function(req, res) {
 
     // 3. Save to database
     // Check for existing users
+
     UserModel.getUserBySignupInfo(username, email, function(err, users) {
         if (err) {
-            console.log("Error:" + err);
+            console.log(err);
             ep.emit('info_error', 'Failed to get user data from database!');
             return;
         }
-
+        //the user existed.
         if (users.length > 0) {
             ep.emit('info_error', 'Username or mailbox is occupied');
             return;
         }
-        UserModel.addUser({ username: username, pass: pass, email: email }, function(err, result) {
+        //Do not have an existing user Info,then adding new user information into the database.
+        UserModel.addUser({ username: name, pass: pass, email: email }, function(err, result) {
             if (result) {
                 res.render('sign/signup', {
                     success: 'Congratulations, your registration was successful'
