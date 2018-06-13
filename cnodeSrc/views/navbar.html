@@ -1,33 +1,23 @@
 <nav class="navbar">
     <div class="navbar-inner">
         <div class="container">
-            <a class="brand" href="/signup">
-                <img src="<%=config.site_logo%>" alt="">
-            </a>
+            <a class="brand" href="/signup"><img src="<%=config.site_logo%>" alt="">            </a>
 
             <form action="/search" id='search_form' class="navbar-search">
                 <input type="text" value='' class="search-query span3 ">
             </form>
 
             <ul class="nav pull-right">
-                <li>
-                    <a href=" / ">Home</a>
-                </li>
-                <li>
-                    <a href="/getstart ">Get Start</a>
-                </li>
-                <li>
-                    <a href="/api ">API</a>
-                </li>
-                <li>
-                    <a href="/about ">About</a>
-                </li>
-                <li>
-                    <a href="/signup ">Sign Up</a>
-                </li>
-                <li>
-                    <a href="/signin ">Sign In</a>
-                </li>
+                <li> <a href=" / ">Home</a></li>
+                <li><a href="/getstart ">Get Start</a></li>
+                <li><a href="/api ">API</a></li>
+                <li><a href="/about ">About</a></li>
+                <% if(current_user){%>
+                    <li> <a href="/signout ">Sign out</a></li>
+                    <%}else{%>
+                        <li> <a href="/signup ">Sign Up</a></li>
+                        <li><a href="/signin ">Sign In</a></li>
+                        <%}%>
             </ul>
 
         </div>

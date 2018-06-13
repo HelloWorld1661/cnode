@@ -2,12 +2,6 @@ var mongoose = require('mongoose');
 var DB_URL = 'mongodb://localhost/node_club';
 mongoose.connect(DB_URL);
 
-// var db = mongoose.connection;
-// db.on('error', console.error.bind(console, 'connection error:'));
-// db.once('open', function(callback) {
-//     console.log('db is open');
-// });
-
 /**
  * The connection is successful
  */

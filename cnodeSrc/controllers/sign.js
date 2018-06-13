@@ -60,16 +60,24 @@ exports.showSignin = function(req, res) {
 };
 
 exports.signin = function(req, res) {
-    var username = req.body.loginname;
+    var username = req.body.name;
     var pass = req.body.pass;
+
+    console.log(username + ';' + pass);
+
 
     if (!username || !pass) {
         res.status(422);
-        return res.status('sign/signin', { error: 'The information you filled in is incomplete！' });
+        return res.render('sign/signin', {
+            error: 'The information you filled in is incomplete！'
+        });
     }
     UserModel.getUser(username, pass, function(err, user) {
+
         if (user) {
+            // console.log(user);
             req.session.user = user;
+            res.render('sign/signin');
             res.render('sign/signin', {
                 success: 'sign in suceesfully'
             });
@@ -83,6 +91,6 @@ exports.signin = function(req, res) {
 };
 
 exports.signout = function(req, res) {
-    req.session.destroyed();
+    req.session.destroy();
     res.redirect('/');
 };
