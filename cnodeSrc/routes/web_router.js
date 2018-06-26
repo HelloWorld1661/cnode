@@ -17,11 +17,11 @@ router.post('/signin', signController.signin);
 //sign out
 router.get('/signout', signController.signout);
 
-// Display posting topic page
+//Display posting topic page
 router.get('/topic/create', auth.requireLogin, function(req, res) {
     res.render('topic/create');
 });
-// Handle user-submitted topic information
+//Handle user-submitted topic information
 router.post('/topic/create', auth.requireLogin, function(req, res) {
 
 });
